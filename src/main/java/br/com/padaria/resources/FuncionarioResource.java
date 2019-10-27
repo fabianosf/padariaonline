@@ -1,23 +1,28 @@
 package br.com.padaria.resources;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.padaria.domain.Funcionario;
+import br.com.padaria.service.FuncionarioService;
 
 @RestController
 @RequestMapping(value = "/funcionarios") //endpointRest
 public class FuncionarioResource {
 	
-	@RequestMapping(method = RequestMethod.GET)
-	public List<Funcionario> listar() throws Exception  {
+	@Autowired
+	private FuncionarioService funcionarioService;
+	
+	
+	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
+	public ResponseEntity<?> find(@PathVariable Integer id) throws Exception  {
 		
+		Funcionario obj = funcionarioService.buscar(id);
+		/*
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");		
 		
 		Funcionario f1 = new Funcionario(1, "Maria Flores","maria@email.com",sdf.parse("25/10/2010 10:30"));
@@ -29,10 +34,10 @@ public class FuncionarioResource {
 		List<Funcionario> lista = new ArrayList<>();
 		lista.add(f1);
 		lista.add(f2);
+		*/
 		
 		
-		
-		return lista;
+		return ResponseEntity.ok().body(obj);
 	}
 
 }
