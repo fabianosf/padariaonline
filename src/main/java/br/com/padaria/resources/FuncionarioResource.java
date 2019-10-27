@@ -1,6 +1,5 @@
 package br.com.padaria.resources;
 
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
