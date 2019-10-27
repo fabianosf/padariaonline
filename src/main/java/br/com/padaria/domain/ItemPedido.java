@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 public class ItemPedido implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -20,6 +22,7 @@ public class ItemPedido implements Serializable {
 	private Integer quantidade;
 	private Float precoVenda;
 	
+	@JsonManagedReference //serve para indicar qual lado desejo os objetos associados
 	@ManyToMany(mappedBy = "itensPedido")
 	private List<Produto> produtos = new ArrayList<>();
 

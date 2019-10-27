@@ -29,7 +29,6 @@ public class SistemaPadariaApplication implements CommandLineRunner{
 	
 	
 	
-	
 	public static void main(String[] args) {
 		SpringApplication.run(SistemaPadariaApplication.class, args);
 	}
